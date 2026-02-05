@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shubham Awasthi | Portfolio</title>
+
+  <style>
+    :root {
+      --bg: #070A12;
+      --card: rgba(255, 255, 255, 0.06);
+      --text: #EAF0FF;
+      --muted: rgba(234, 240, 255, 0.7);
+      --accent: #7C5CFF;
+      --accent2: #00E5FF;
+      --border: rgba(255, 255, 255, 0.12);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", system-ui, sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top left, rgba(124,92,255,0.25), transparent 50%),
+                  radial-gradient(circle at bottom right, rgba(0,229,255,0.15), transparent 45%),
+                  var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 8%;
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7, 10, 18, 0.6);
+    }
+
+    .logo {
+      font-weight: 800;
+      letter-spacing: 1px;
+      font-size: 18px;
+    }
+
+    .logo span {
+      color: var(--accent2);
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      margin-left: 18px;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 80px 8%;
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: 54px;
+      line-height: 1.05;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.6;
+      max-width: 560px;
+    }
+
+    .hero .buttons {
+      margin-top: 26px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 12px 18px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: 700;
+      transition: 0.25s;
+      display: inline-block;
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .btn.primary {
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      color: black;
+      border: none;
+      box-shadow: 0 0 25px rgba(0, 229, 255, 0.18);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.35);
+      backdrop-filter: blur(10px);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .stat h3 {
+      font-size: 20px;
+      margin-bottom: 6px;
+    }
+
+    .stat p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    section {
+      padding: 60px 8%;
+    }
+
+    .section-title {
+      font-size: 30px;
+      margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      margin-bottom: 30px;
+      max-width: 750px;
+      line-height: 1.6;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .info h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .info p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-right: 6px;
+      margin-bottom: 6px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      color: rgba(234,240,255,0.85);
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill {
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .glow-line {
+      height: 2px;
+      width: 100%;
+      background: linear-gradient(90deg, transparent, var(--accent2), var(--accent), transparent);
+      opacity: 0.7;
+      margin: 40px 0;
+    }
+
+    footer {
+      padding: 20px 8%;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media(max-width: 980px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+      .hero h1 {
+        font-size: 44px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">Shubham <span>Awasthi</span></div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#links">Links</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <div class="hero">
+      <div>
+        <h1>Hi, I'm <span>Shubham Awasthi</span></h1>
+
+        <p>
+          I am a Computer Science student passionate about programming, problem solving,
+          and learning modern technologies. I focus on building strong fundamentals in
+          DSA, DBMS, and software development.
+        </p>
+
+        <div class="buttons">
+          <a class="btn primary" href="#skills">View Skills</a>
+          <a class="btn" href="#roadmap">Learning Roadmap</a>
+          <a class="btn" href="#links">Connect</a>
+        </div>
+
+        <div class="glow-line"></div>
+
+        <div class="skills">
+          <div class="skill">Java</div>
+          <div class="skill">C++</div>
+          <div class="skill">Python</div>
+          <div class="skill">HTML</div>
+          <div class="skill">CSS</div>
+          <div class="skill">DSA</div>
+          <div class="skill">DBMS</div>
+        </div>
+      </div>
+
+      <!-- RIGHT CARD -->
+      <div class="card">
+        <h2 style="margin-bottom:14px;">Quick Overview</h2>
+
+        <div class="stats">
+          <div class="card stat">
+            <h3>DSA</h3>
+            <p>Problem Solving</p>
+          </div>
+
+          <div class="card stat">
+            <h3>DBMS</h3>
+            <p>SQL + Concepts</p>
+          </div>
+
+          <div class="card stat">
+            <h3>Web</h3>
+            <p>HTML / CSS</p>
+          </div>
+
+          <div class="card stat">
+            <h3>OOP</h3>
+            <p>Java / C++</p>
+          </div>
+        </div>
+
+        <p style="margin-top:16px; color: var(--muted); line-height:1.6;">
+          I am actively learning and improving my technical skills with consistent practice
+          and discipline.
+        </p>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <h2 class="section-title">About Me</h2>
+
+      <p class="section-subtitle">
+        I am currently building strong foundations in computer science.
+        My main interests include programming, algorithms, database systems,
+        and exploring emerging domains like AI and quantum computing.
+      </p>
+
+      <div class="grid-3">
+        <div class="card info">
+          <h3>What I'm Good At</h3>
+          <p>
+            Writing clean code, learning concepts quickly, and solving problems step-by-step.
+            I focus on understanding fundamentals rather than memorizing solutions.
+          </p>
+          <span class="tag">Programming</span>
+          <span class="tag">Logic</span>
+          <span class="tag">Discipline</span>
+        </div>
+
+        <div class="card info">
+          <h3>What I'm Learning</h3>
+          <p>
+            Improving DSA, strengthening DBMS concepts, and developing strong command in Java,
+            C++ and Python.
+          </p>
+          <span class="tag">DSA</span>
+          <span class="tag">DBMS</span>
+          <span class="tag">OOP</span>
+        </div>
+
+        <div class="card info">
+          <h3>My Goal</h3>
+          <p>
+            To become a skilled software developer by improving problem solving, building projects,
+            and gaining experience through real-world development.
+          </p>
+          <span class="tag">Development</span>
+          <span class="tag">Growth</span>
+          <span class="tag">Career</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <h2 class="section-title">Skills</h2>
+
+      <p class="section-subtitle">
+        These are the technologies and concepts I work with and continue improving.
+      </p>
+
+      <div class="card">
+        <div class="skills">
+          <div class="skill">Java</div>
+          <div class="skill">C++</div>
+          <div class="skill">Python</div>
+          <div class="skill">HTML</div>
+          <div class="skill">CSS</div>
+          <div class="skill">OOP</div>
+          <div class="skill">Data Structures</div>
+          <div class="skill">Algorithms</div>
+          <div class="skill">DBMS</div>
+          <div class="skill">SQL</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROADMAP -->
+    <section id="roadmap">
+      <h2 class="section-title">Learning Roadmap</h2>
+
+      <p class="section-subtitle">
+        This roadmap represents what I am currently focusing on to improve my skills and career readiness.
+      </p>
+
+      <div class="grid-3">
+        <div class="card info">
+          <h3>Phase 1: Core CS</h3>
+          <p>
+            Strengthen DSA, master OOP, and improve database fundamentals.
+          </p>
+          <span class="tag">DSA</span>
+          <span class="tag">DBMS</span>
+          <span class="tag">OOP</span>
+        </div>
+
+        <div class="card info">
+          <h3>Phase 2: Development Skills</h3>
+          <p>
+            Build personal projects, improve coding practices, and learn Git/GitHub.
+          </p>
+          <span class="tag">Projects</span>
+          <span class="tag">Git</span>
+          <span class="tag">Development</span>
+        </div>
+
+        <div class="card info">
+          <h3>Phase 3: Advanced Domains</h3>
+          <p>
+            Explore AI, machine learning basics, and future technologies like quantum computing.
+          </p>
+          <span cl
